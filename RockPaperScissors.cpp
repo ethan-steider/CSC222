@@ -1,4 +1,5 @@
 #include <iostream>
+#include <random>
 using namespace std;
 
 // Program should loop until user decides to quit
@@ -14,13 +15,23 @@ void displayChoice();
 void playGame(char choice);
 
 
+
 void displayChoice()
 {
     char choice; // take user input
     cout << "Enter Rock, Paper, Scissors, or Quit: "; // prompts user to enter choice
     cin >> choice; // takes in chocie
     cout << "You chose: " << choice << endl; //tells user what they chose
-    if choice == 'Quit'
-    playGame(choice); //plays game with choice
+    if (choice == 'Quit') {
+        playGame(choice); // plays game with choice
+
+    }
 }
 
+int main()
+{
+    char choice;
+    displayChoice();
+    playGame(choice);
+    return 0;
+}
