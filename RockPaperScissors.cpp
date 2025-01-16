@@ -23,15 +23,20 @@ void displayChoice()
     cin >> choice; // takes in chocie
     cout << "You chose: " << choice << endl; //tells user what they chose
     if (choice == 'Quit') {
-        playGame(choice); // plays game with choice
-
+        displayChoice(); // restarts game
+    }
+    else if (choice == 'Rock') {
+        playGame(choice); // plays game with choice rock
+    }
+    else if (choice == 'Paper') {
+        playGame(choice); //plays game with paper
     }
 }
 
 int main()
 {
-    char choice;
-    displayChoice();
-    playGame(choice);
+    char choice; // take user input
+    displayChoice(); // display choice
+    playGame(choice); // plays game with choice
     return 0;
 }
