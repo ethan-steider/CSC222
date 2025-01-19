@@ -24,6 +24,11 @@ void playGame(char choice);
 void keepScore(char winner);
 
 
+void keepScore(char winner) {
+    int humanScore = 0;
+    int computerScore = 0;
+    
+}
 
 void playGame(char choice) {
     if (choice == 'Rock') {
