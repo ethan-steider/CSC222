@@ -27,21 +27,36 @@ void keepScore(char winner);
 void keepScore(char winner) {
     int humanScore = 0;
     int computerScore = 0;
-    
+    if (winner == 'Human wins') {
+        humanScore == humanScore + 1;
+        cout << "Human Score: " << humanScore << endl;
+        cout << "Computer Score: " << computerScore << endl;
+    }
+    else if (winner == 'Computer wins') {
+        computerScore == computerScore + 1;
+        cout << "Human Score: " << humanScore << endl;
+        cout << "Computer Score: " << computerScore << endl;
+    }
+    else {
+        cout << "No winner" << endl;
+    }
 }
 
 void playGame(char choice) {
+    char computerWin = 'Computer wins';
+    char humanWin = 'Human wins';
+
     if (choice == 'Rock') {
         if (diceValue(engine) == 1) {
             cout << "no winner" << endl;
         }
         else if (diceValue(engine) == 2) {
             cout << "Computer wins" << endl;
-            keepScore("Computer won");
+            keepScore(computerWin);
         }
         else if (diceValue(engine) == 3) {
             cout << "You win" << endl;
-            keepScore("Human won");
+            keepScore(humanWin);
         }
     }
 }
