@@ -26,38 +26,67 @@ void keepScore(char winner);
 
 void keepScore(char winner) {
     int humanScore = 0;
-    int computerScore = 0;
+    int computerScore = 0; // start scores at 0
     if (winner == 'Human wins') {
-        humanScore == humanScore + 1;
-        cout << "Human Score: " << humanScore << endl;
+        humanScore == humanScore + 1; // adding score if human wins
+        cout << "Human Score: " << humanScore << endl; // display scores
         cout << "Computer Score: " << computerScore << endl;
     }
     else if (winner == 'Computer wins') {
-        computerScore == computerScore + 1;
-        cout << "Human Score: " << humanScore << endl;
+        computerScore == computerScore + 1; // adding score if computer wins
+        cout << "Human Score: " << humanScore << endl; // display scores
         cout << "Computer Score: " << computerScore << endl;
     }
     else {
-        cout << "No winner" << endl;
+        cout << "It's a draw!" << endl; // if it's a draw, display draw
     }
 }
 
 void playGame(char choice) {
     char computerWin = 'Computer wins';
-    char humanWin = 'Human wins';
+    char humanWin = 'Human wins'; // set win conditions
 
-    if (choice == 'Rock') {
-        if (diceValue(engine) == 1) {
-            cout << "no winner" << endl;
+    if (choice == 'Rock') { 
+        if (diceValue(engine) == 1) { // if random number is 1, it's a draw
+            cout << "It's a draw!" << endl; //
         }
-        else if (diceValue(engine) == 2) {
+        else if (diceValue(engine) == 2) { // if random number is 2, computer wins
             cout << "Computer wins" << endl;
             keepScore(computerWin);
         }
-        else if (diceValue(engine) == 3) {
+        else if (diceValue(engine) == 3) { // if random number is 3, human wins
             cout << "You win" << endl;
             keepScore(humanWin);
         }
+    }
+    else if (choice == 'Paper') {
+        if (diceValue(engine) == 1) { // if random number is 1, human wins
+            cout << "You win" << endl;
+            keepScore(humanWin);
+        }
+        else if (diceValue(engine) == 2) { // if random number is 2, it's a draw
+            cout << "It's a draw!" << endl;
+        }
+        else if (diceValue(engine) == 3) { // if random number is 3, computer wins
+            cout << "Computer wins" << endl;
+            keepScore(computerWin);
+        }
+    }
+    else if (choice == 'Scissors') {
+        if (diceValue(engine) == 1) { // if random number is 1, computer wins
+            cout << "Computer wins" << endl;
+            keepScore(computerWin);
+        }
+        else if (diceValue(engine) == 2) { // if random number is 2, human wins
+            cout << "You win" << endl;
+            keepScore(humanWin);
+        }
+        else if (diceValue(engine) == 3) { // if random number is 3, it's a draw
+            cout << "It's a draw!" << endl;
+        }
+    }
+    else {
+        cout << "It's a draw!" << endl; // if it's a draw, display draw
     }
 }
 
