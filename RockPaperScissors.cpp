@@ -15,20 +15,30 @@ using namespace std;
 random_device engine;
  
 // Distribution object
-uniform_int_distribution<int> dist(1, 3);
+uniform_int_distribution<int> diceValue(1, 3);
 
 // Function prototypes
 
 void displayChoice();
 void playGame(char choice);
 void keepScore(char winner);
-void displayScore(char winner);
 
 
 
 void playGame(char choice) {
-
-// test
+    if (choice == 'Rock') {
+        if (diceValue(engine) == 1) {
+            cout << "no winner" << endl;
+        }
+        else if (diceValue(engine) == 2) {
+            cout << "Computer wins" << endl;
+            keepScore("Computer won");
+        }
+        else if (diceValue(engine) == 3) {
+            cout << "You win" << endl;
+            keepScore("Human won");
+        }
+    }
 }
 
 void displayChoice()
