@@ -111,7 +111,7 @@ void displayChoice() {
         cout << "Final Scores" << endl;
         cout << "Human Score: " << humanScore << endl;
         cout << "Computer Score: " << computerScore << endl;
-        return; // if user enters quit, display scores and end game
+        main(); // if user enters quit, display scores and end game
     }
     else if (choice == "Rock") {
         playGame(choice); // plays game with choice rock
@@ -125,7 +125,7 @@ void displayChoice() {
     else {
         cout << "Invalid choice" << endl; // if user enters invalid choice, display invalid choice
     }
-    displayChoice(); // restart game
+    displayChoice(); // loop back to start
 }
 
 int main() {
