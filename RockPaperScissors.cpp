@@ -28,12 +28,12 @@ void keepScore(string winner) {
     int humanScore = 0;
     int computerScore = 0; // start scores at 0
     if (winner == "Human wins") {
-        humanScore == humanScore + 1; // adding score if human wins
+        humanScore = humanScore + 1; // adding score if human wins
         cout << "Human Score: " << humanScore << endl; // display scores
         cout << "Computer Score: " << computerScore << endl;
     }
     else if (winner == "Computer wins") {
-        computerScore == computerScore + 1; // adding score if computer wins
+        computerScore = computerScore + 1; // adding score if computer wins
         cout << "Human Score: " << humanScore << endl; // display scores
         cout << "Computer Score: " << computerScore << endl;
     }
@@ -47,41 +47,41 @@ int playGame(string choice) {
     string humanWin = "Human wins"; // set win conditions 
 
     if (choice == "Rock") { 
-        if (computerchoice = 1) { // if random number is 1, it's a draw
+        if (computerchoice == 1) { // if random number is 1, it's a draw
             cout << "It's a draw!" << endl; //
         }
-        else if (computerchoice = 2) { // if random number is 2, computer wins
+        else if (computerchoice == 2) { // if random number is 2, computer wins
             cout << "Computer wins" << endl;
             keepScore(computerWin);
         }
-        else if (computerchoice = 3) { // if random number is 3, human wins
+        else if (computerchoice == 3) { // if random number is 3, human wins
             cout << "You win" << endl;
             keepScore(humanWin);
         }
     }
     else if (choice == "Paper") {
-        if (computerchoice = 1) { // if random number is 1, human wins
+        if (computerchoice == 1) { // if random number is 1, human wins
             cout << "You win" << endl;
             keepScore(humanWin);
         }
-        else if (computerchoice = 2) { // if random number is 2, it's a draw
+        else if (computerchoice == 2) { // if random number is 2, it's a draw
             cout << "It's a draw!" << endl;
         }
-        else if (computerchoice = 3) { // if random number is 3, computer wins
+        else if (computerchoice == 3) { // if random number is 3, computer wins
             cout << "Computer wins" << endl;
             keepScore(computerWin);
         }
     }
     else if (choice == "Scissors") {
-        if (computerchoice = 1) { // if random number is 1, computer wins
+        if (computerchoice == 1) { // if random number is 1, computer wins
             cout << "Computer wins" << endl;
             keepScore(computerWin);
         }
-        else if (computerchoice = 2) { // if random number is 2, human wins
+        else if (computerchoice == 2) { // if random number is 2, human wins
             cout << "You win" << endl;
             keepScore(humanWin);
         }
-        else if (computerchoice = 3) { // if random number is 3, it's a draw
+        else if (computerchoice == 3) { // if random number is 3, it's a draw
             cout << "It's a draw!" << endl;
         }
     }
@@ -93,13 +93,13 @@ void displayChoice() {
     cout << "Enter Rock, Paper, Scissors, or Quit: "; // prompts user to enter choice
     cin >> choice; // takes in chocie
     cout << "You chose: " << choice << endl; //tells user what they chose
-    if (computerchoice = 1) {
+    if (computerchoice == 1) {
         cout << "Computer chose: Rock" << endl; // tells user what computer chose
     }
-    else if (computerchoice = 2) {
+    else if (computerchoice == 2) {
         cout << "Computer chose: Paper" << endl; // tells user what computer chose
     }
-    else if (computerchoice = 3) {
+    else if (computerchoice == 3) {
         cout << "Computer chose: Scissors" << endl; // tells user what computer chose
     }
     if (choice == "Quit") {
