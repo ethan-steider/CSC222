@@ -20,9 +20,9 @@ uniform_int_distribution<int> diceValue(1, 3);
 // Function prototypes
 
 void displayChoice();
-void playGame(char choice);
-void keepScore(char winner);
-
+int playGame(string choice);
+void keepScore(string winner);
+int computerchoice = diceValue(engine); // random number generator
 
 void keepScore(string winner) {
     int humanScore = 0;
@@ -44,61 +44,64 @@ void keepScore(string winner) {
 
 int playGame(string choice) {
     string computerWin = "Computer wins";
-    string humanWin = "Human wins"; // set win conditions
-    int computerchoice = diceValue(engine); // computer choice is random number
+    string humanWin = "Human wins"; // set win conditions 
 
     if (choice == "Rock") { 
-        if (computerchoice == 1) { // if random number is 1, it's a draw
+        if (computerchoice = 1) { // if random number is 1, it's a draw
             cout << "It's a draw!" << endl; //
         }
-        else if (computerchoice == 2) { // if random number is 2, computer wins
+        else if (computerchoice = 2) { // if random number is 2, computer wins
             cout << "Computer wins" << endl;
             keepScore(computerWin);
         }
-        else if (computerchoice == 3) { // if random number is 3, human wins
+        else if (computerchoice = 3) { // if random number is 3, human wins
             cout << "You win" << endl;
             keepScore(humanWin);
         }
     }
-    else if (choice == 'Paper') {
-        if (computerchoice == 1) { // if random number is 1, human wins
+    else if (choice == "Paper") {
+        if (computerchoice = 1) { // if random number is 1, human wins
             cout << "You win" << endl;
             keepScore(humanWin);
         }
-        else if (computerchoice == 2) { // if random number is 2, it's a draw
+        else if (computerchoice = 2) { // if random number is 2, it's a draw
             cout << "It's a draw!" << endl;
         }
-        else if (computerchoice == 3) { // if random number is 3, computer wins
+        else if (computerchoice = 3) { // if random number is 3, computer wins
             cout << "Computer wins" << endl;
             keepScore(computerWin);
         }
     }
-    else if (choice == 'Scissors') {
-        if (computerchoice == 1) { // if random number is 1, computer wins
+    else if (choice == "Scissors") {
+        if (computerchoice = 1) { // if random number is 1, computer wins
             cout << "Computer wins" << endl;
             keepScore(computerWin);
         }
-        else if (computerchoice == 2) { // if random number is 2, human wins
+        else if (computerchoice = 2) { // if random number is 2, human wins
             cout << "You win" << endl;
             keepScore(humanWin);
         }
-        else if (computerchoice == 3) { // if random number is 3, it's a draw
+        else if (computerchoice = 3) { // if random number is 3, it's a draw
             cout << "It's a draw!" << endl;
         }
-    }
-    else {
-        cout << "It's a draw!" << endl; // if it's a draw, display draw
     }
     return computerchoice;
 }
 
-void displayChoice()
-{
+void displayChoice() {
     string choice; // take user input
     cout << "Enter Rock, Paper, Scissors, or Quit: "; // prompts user to enter choice
     cin >> choice; // takes in chocie
     cout << "You chose: " << choice << endl; //tells user what they chose
-    cout << "Computer chose: " << diceValue(engine) << endl; // tells user what computer chose
+    if (computerchoice = 1) {
+        cout << "Computer chose: Rock" << endl; // tells user what computer chose
+    }
+    else if (computerchoice = 2) {
+        cout << "Computer chose: Paper" << endl; // tells user what computer chose
+    }
+    else if (computerchoice = 3) {
+        cout << "Computer chose: Scissors" << endl; // tells user what computer chose
+    }
     if (choice == "Quit") {
         displayChoice(); // restarts game
     }
@@ -115,7 +118,7 @@ void displayChoice()
 
 int main()
 {
-    char choice; // take user input
+    string choice; // take user input
     displayChoice(); // display choice
     playGame(choice); // plays game with choice
     return 0;
