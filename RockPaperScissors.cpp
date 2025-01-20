@@ -24,15 +24,15 @@ void playGame(char choice);
 void keepScore(char winner);
 
 
-void keepScore(char winner) {
+void keepScore(string winner) {
     int humanScore = 0;
     int computerScore = 0; // start scores at 0
-    if (winner == 'Human wins') {
+    if (winner == "Human wins") {
         humanScore == humanScore + 1; // adding score if human wins
         cout << "Human Score: " << humanScore << endl; // display scores
         cout << "Computer Score: " << computerScore << endl;
     }
-    else if (winner == 'Computer wins') {
+    else if (winner == "Computer wins") {
         computerScore == computerScore + 1; // adding score if computer wins
         cout << "Human Score: " << humanScore << endl; // display scores
         cout << "Computer Score: " << computerScore << endl;
@@ -42,70 +42,73 @@ void keepScore(char winner) {
     }
 }
 
-void playGame(char choice) {
-    char computerWin = 'Computer wins';
-    char humanWin = 'Human wins'; // set win conditions
+int playGame(string choice) {
+    string computerWin = "Computer wins";
+    string humanWin = "Human wins"; // set win conditions
+    int computerchoice = diceValue(engine); // computer choice is random number
 
-    if (choice == 'Rock') { 
-        if (diceValue(engine) == 1) { // if random number is 1, it's a draw
+    if (choice == "Rock") { 
+        if (computerchoice == 1) { // if random number is 1, it's a draw
             cout << "It's a draw!" << endl; //
         }
-        else if (diceValue(engine) == 2) { // if random number is 2, computer wins
+        else if (computerchoice == 2) { // if random number is 2, computer wins
             cout << "Computer wins" << endl;
             keepScore(computerWin);
         }
-        else if (diceValue(engine) == 3) { // if random number is 3, human wins
+        else if (computerchoice == 3) { // if random number is 3, human wins
             cout << "You win" << endl;
             keepScore(humanWin);
         }
     }
     else if (choice == 'Paper') {
-        if (diceValue(engine) == 1) { // if random number is 1, human wins
+        if (computerchoice == 1) { // if random number is 1, human wins
             cout << "You win" << endl;
             keepScore(humanWin);
         }
-        else if (diceValue(engine) == 2) { // if random number is 2, it's a draw
+        else if (computerchoice == 2) { // if random number is 2, it's a draw
             cout << "It's a draw!" << endl;
         }
-        else if (diceValue(engine) == 3) { // if random number is 3, computer wins
+        else if (computerchoice == 3) { // if random number is 3, computer wins
             cout << "Computer wins" << endl;
             keepScore(computerWin);
         }
     }
     else if (choice == 'Scissors') {
-        if (diceValue(engine) == 1) { // if random number is 1, computer wins
+        if (computerchoice == 1) { // if random number is 1, computer wins
             cout << "Computer wins" << endl;
             keepScore(computerWin);
         }
-        else if (diceValue(engine) == 2) { // if random number is 2, human wins
+        else if (computerchoice == 2) { // if random number is 2, human wins
             cout << "You win" << endl;
             keepScore(humanWin);
         }
-        else if (diceValue(engine) == 3) { // if random number is 3, it's a draw
+        else if (computerchoice == 3) { // if random number is 3, it's a draw
             cout << "It's a draw!" << endl;
         }
     }
     else {
         cout << "It's a draw!" << endl; // if it's a draw, display draw
     }
+    return computerchoice;
 }
 
 void displayChoice()
 {
-    char choice; // take user input
+    string choice; // take user input
     cout << "Enter Rock, Paper, Scissors, or Quit: "; // prompts user to enter choice
     cin >> choice; // takes in chocie
     cout << "You chose: " << choice << endl; //tells user what they chose
-    if (choice == 'Quit') {
+    cout << "Computer chose: " << diceValue(engine) << endl; // tells user what computer chose
+    if (choice == "Quit") {
         displayChoice(); // restarts game
     }
-    else if (choice == 'Rock') {
+    else if (choice == "Rock") {
         playGame(choice); // plays game with choice rock
     }
-    else if (choice == 'Paper') {
+    else if (choice == "Paper") {
         playGame(choice); //plays game with paper
     }
-    else if (choice == 'Scissors') {
+    else if (choice == "Scissors") {
         playGame(choice); // plays game with scissors
     }
 }
