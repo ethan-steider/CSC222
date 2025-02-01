@@ -31,11 +31,27 @@ const string FileName = "StudentGrades.txt";
 //function to read data from file
 
 
-//function to calculate average test scor
+//function to calculate average test scores
+
 
 //function to calculate letter grade
 
 //function to produce formatted report
+
+int getData(istream &inFile, string names[], int data[][Max_cols])
+{
+    int records = 0;
+    while(inFile >> names[records] && records <= Max_Rows)
+    {
+        for(int c=0; c<Max_cols; c++)
+        {
+            inFile >> data[records][c];
+        }
+        records++;
+    }
+    return records;
+}
+
 
 int main() {
     // open file here
@@ -50,6 +66,15 @@ int main() {
         cout << "Error opening file " << FileName << endl;
         return 1;
     }
+    numStudents = getData(inFile, names, data);
 
-    readData()
+    for(int r=0; r<numStudents; r++)
+    {
+        cout << names[r] << " ";
+        for(int c=0; c<Max_cols; c++)
+        {
+            cout << data[r][c] << " ";
+        }
+        cout << endl;
+    }
 }
