@@ -30,18 +30,16 @@ const string FileName = "StudentGrades.txt";
 int getData(istream &inFile, string names[], int data[][Max_cols]);
 char getLetterGrade(double average);
 void printReport(string names[], int data[][Max_cols], double averages[], int numStudents);
+int calculateAverages(int data[][Max_cols], double averages[], int numStudents);
 
 
 //function to produce formatted report
-void 
+void printReport(string names[], int data[][Max_cols], double averages[], int numStudents){
+    return 0;
+}
 
-//function to calculate average test scores
 
-
-
-//function to calculate letter grade
-
-char getLetterGrade(double average)
+char getLetterGrade(double average) //function to calculate letter grade
 {
     if(average >= 90)
     {
@@ -65,11 +63,16 @@ char getLetterGrade(double average)
     }
 }
 
+//function to calculate average test scores
+int calculateAverages(int data[][Max_cols], double averages[], int numStudents)
+{
+   return 60;
+}
 
 int getData(istream &inFile, string names[], int data[][Max_cols])
 {
     int records = 0;
-    while(inFile >> names[records] && records <= Max_Rows)
+    while(inFile >> names[records] && records < Max_Rows)
     {
         for(int c=0; c<Max_cols; c++)
         {
@@ -94,7 +97,11 @@ int main() {
         cout << "Error opening file " << FileName << endl;
         return 1;
     }
+
     numStudents = getData(inFile, names, data);
+    calculateAverages(data, averages, numStudents);
+    printReport(names, data, averages, numStudents);
+
     inFile.close();
     // calculate averages
 
