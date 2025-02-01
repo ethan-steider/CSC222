@@ -40,6 +40,16 @@ const string FileName = "StudentGrades.txt";
 int main() {
     // open file here
     // call readData function
+    string names[Max_Rows];
+    int data[Max_Rows][Max_cols];
+    double averages[Max_Rows];
+    int numStudents;
+    ifstream inFile;
+    inFile.open(FileName);
+    if (!inFile.is_open()) {
+        cout << "Error opening file " << FileName << endl;
+        return 1;
+    }
 
     readData()
 }
