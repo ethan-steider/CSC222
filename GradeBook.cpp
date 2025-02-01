@@ -27,14 +27,17 @@ const string FileName = "StudentGrades.txt";
 
 // function prototype
 // function prototype
+int getData(istream &inFile, string names[], int data[][Max_cols]);
+char getLetterGrade(double average);
+void printReport(string names[], int data[][Max_cols], double averages[], int numStudents);
 
 
 //function to produce formatted report
-
+void 
 
 //function to calculate average test scores
 
-int
+
 
 //function to calculate letter grade
 
