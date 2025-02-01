@@ -1,5 +1,7 @@
 #include <iostream>
 #include <fstream>
+#include <string>
+using namespace std;
 
 //	Write a program that averages student test scores and provides letter grades for the averages for a teacher to record in a grade book
 
@@ -16,19 +18,28 @@
 // 0-59 F
 // program should be modular and use parallel arrays. names stored as array of strings. test scores stored as 2d array, row for student and test scores in columns
 //averages stored in a separate array of doubles
+// example data
+// Aaliyah 82 72 91 74 82
 
-void readData(string names[], double scores[], int numStudents); // function prototype
+const int Max_cols = 7;
+const int Max_Rows = 15;
+const string FileName = "StudentGrades.txt";
+
+// function prototype
+// function prototype
 
 //function to read data from file
-void readData(string names[], double scores[], int numStudents); {
-    std::ifstream inputFile("StudentGrades.txt");
-    
 
-}
 
-//function to calculate average test score
+//function to calculate average test scor
 
 //function to calculate letter grade
 
 //function to produce formatted report
 
+int main() {
+    // open file here
+    // call readData function
+
+    readData()
+}
