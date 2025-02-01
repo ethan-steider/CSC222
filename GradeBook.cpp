@@ -27,10 +27,10 @@ const string FileName = "StudentGrades.txt";
 
 // function prototype
 // function prototype
-int getData(istream &inFile, string names[], int data[][Max_cols]);
-char getLetterGrade(double average);
-void printReport(string names[], int data[][Max_cols], double averages[], int numStudents);
-int calculateAverages(int data[][Max_cols], double averages[], int numStudents);
+int getData(istream &inFile, string names[], int data[][Max_cols]); //function to read in data from file
+char getLetterGrade(double average);   //function to calculate letter grade
+void printReport(string names[], int data[][Max_cols], double averages[], int numStudents); //function to produce formatted report
+int calculateAverages(int data[][Max_cols], double averages[], int numStudents);   //function to calculate average test scores
 
 
 //function to produce formatted report
@@ -72,37 +72,35 @@ int calculateAverages(int data[][Max_cols], double averages[], int numStudents)
 int getData(istream &inFile, string names[], int data[][Max_cols])
 {
     int records = 0;
-    while(inFile >> names[records] && records < Max_Rows)
+    while(inFile >> names[records] && records < Max_Rows) // read in names
     {
-        for(int c=0; c<Max_cols; c++)
+        for(int c=0; c<Max_cols; c++) // read in test scores
         {
-            inFile >> data[records][c];
+            inFile >> data[records][c]; 
         }
-        records++;
+        records++; 
     }
     return records;
 }
 
 
 int main() {
-    // open file here
-    // call readData function
-    string names[Max_Rows];
-    int data[Max_Rows][Max_cols];
-    double averages[Max_Rows];
-    int numStudents;
+    string names[Max_Rows]; // array to store student names
+    int data[Max_Rows][Max_cols]; // 2d array to store test scores
+    double averages[Max_Rows]; // array to store averages
+    int numStudents;   
     ifstream inFile;
     inFile.open(FileName);
-    if (!inFile.is_open()) {
+    if (!inFile.is_open()) { // check if file is open
         cout << "Error opening file " << FileName << endl;
         return 1;
     }
 
-    numStudents = getData(inFile, names, data);
-    calculateAverages(data, averages, numStudents);
+    numStudents = getData(inFile, names, data); // call getData function
+    calculateAverages(data, averages, numStudents); // calculate averages
     printReport(names, data, averages, numStudents);
 
     inFile.close();
-    // calculate averages
+    
 
 }
