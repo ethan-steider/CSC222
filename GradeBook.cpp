@@ -28,15 +28,40 @@ const string FileName = "StudentGrades.txt";
 // function prototype
 // function prototype
 
-//function to read data from file
+
+//function to produce formatted report
 
 
 //function to calculate average test scores
 
+int
 
 //function to calculate letter grade
 
-//function to produce formatted report
+char getLetterGrade(double average)
+{
+    if(average >= 90)
+    {
+        return 'A';
+    }
+    else if(average >= 80)
+    {
+        return 'B';
+    }
+    else if(average >= 70)
+    {
+        return 'C';
+    }
+    else if(average >= 60)
+    {
+        return 'D';
+    }
+    else
+    {
+        return 'F';
+    }
+}
+
 
 int getData(istream &inFile, string names[], int data[][Max_cols])
 {
@@ -67,14 +92,7 @@ int main() {
         return 1;
     }
     numStudents = getData(inFile, names, data);
+    inFile.close();
+    // calculate averages
 
-    for(int r=0; r<numStudents; r++)
-    {
-        cout << names[r] << " ";
-        for(int c=0; c<Max_cols; c++)
-        {
-            cout << data[r][c] << " ";
-        }
-        cout << endl;
-    }
 }
