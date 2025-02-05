@@ -21,7 +21,7 @@ using namespace std;
 // example data
 // Aaliyah 82 72 91 74 82
 
-const int Max_cols = 7;
+const int Max_cols = 5;
 const int Max_Rows = 15;
 const string FileName = "StudentGrades.txt";
 
@@ -39,10 +39,10 @@ void printReport(string names[], int data[][Max_cols], double averages[], int nu
     cout << "************************************" << endl;
     cout << "Name Average Score  Grade" << endl;
     cout << "*** ************* ******* " << endl;
-    for(int x =0 ; x <= numStudents; x++){
+    for(int x =0 ; x < numStudents; x++){
         cout << names[x] << "  ";
         cout << averages[x] << "  ";
-        cout << getLetterGrade(averages[x]) << "    ";
+        cout << getLetterGrade(averages[x]) << endl;
     }
 }
 
@@ -72,20 +72,14 @@ char getLetterGrade(double average) //function to calculate letter grade
 }
 
 //function to calculate average test scores
-int calculateAverages(int data[][Max_cols], double averages[], int numStudents)
-{
-    int grade;
-    int sum = 0;
-    for(int r=0; r<numStudents; r++)
-    {
-        sum = 0;
-        for(int c=0; c<Max_cols; c++)
-        {
+int calculateAverages(int data[][Max_cols], double averages[], int numStudents) {
+    for (int r = 0; r < numStudents; r++) {
+        int sum = 0;
+        for (int c = 0; c < Max_cols; c++) {
             sum += data[r][c];
         }
         averages[r] = sum / Max_cols;
     }
-   return grade;
 }
 
 int getData(istream &inFile, string names[], int data[][Max_cols])
@@ -114,7 +108,6 @@ int main() {
         cout << "Error opening file " << FileName << endl;
         return 1;
     }
-
     numStudents = getData(inFile, names, data); // call getData function
     calculateAverages(data, averages, numStudents); // calculate averages
     printReport(names, data, averages, numStudents);
