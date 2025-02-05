@@ -35,7 +35,9 @@ int calculateAverages(int data[][Max_cols], double averages[], int numStudents);
 
 //function to produce formatted report
 void printReport(string names[], int data[][Max_cols], double averages[], int numStudents){
-    return 0;
+    cout << "Student Test Scores & Letter Grades" << endl;
+    cout << "************************************" << endl;
+    cout << "Name Test Scores Average Grade" << endl;
 }
 
 
@@ -99,8 +101,7 @@ int main() {
     numStudents = getData(inFile, names, data); // call getData function
     calculateAverages(data, averages, numStudents); // calculate averages
     printReport(names, data, averages, numStudents);
-
     inFile.close();
     
-
+    return 0;
 }
