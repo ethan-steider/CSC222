@@ -35,14 +35,14 @@ int calculateAverages(int data[][Max_cols], double averages[], int numStudents);
 
 //function to produce formatted report
 void printReport(string names[], int data[][Max_cols], double averages[], int numStudents){
-    cout << "Student Average Score & Letter Grades" << endl;
+    cout << "Gradebook" << endl;
     cout << "************************************" << endl;
-    cout << "Name Average Score Average Grade" << endl;
-    cout << "*** ************* ******* *****" << endl;
+    cout << "Name Average Score  Grade" << endl;
+    cout << "*** ************* ******* " << endl;
     for(int x =0 ; x <= numStudents; x++){
-        cout << names[x] << " ";
-        cout << averages[x] << " ";
-        cout << getLetterGrade(averages[x]) << " ";
+        cout << names[x] << "  ";
+        cout << averages[x] << "  ";
+        cout << getLetterGrade(averages[x]) << "    ";
     }
 }
 
@@ -74,7 +74,18 @@ char getLetterGrade(double average) //function to calculate letter grade
 //function to calculate average test scores
 int calculateAverages(int data[][Max_cols], double averages[], int numStudents)
 {
-   return 60;
+    int grade;
+    int sum = 0;
+    for(int r=0; r<numStudents; r++)
+    {
+        sum = 0;
+        for(int c=0; c<Max_cols; c++)
+        {
+            sum += data[r][c];
+        }
+        averages[r] = sum / Max_cols;
+    }
+   return grade;
 }
 
 int getData(istream &inFile, string names[], int data[][Max_cols])
