@@ -22,7 +22,7 @@ using namespace std;
 // Aaliyah 82 72 91 74 82
 
 const int Max_cols = 5;
-const int Max_Rows = 15;
+const int Max_Rows = 15; // global constants
 const string FileName = "StudentGrades.txt";
 
 // function prototype
@@ -37,12 +37,12 @@ int calculateAverages(int data[][Max_cols], double averages[], int numStudents);
 void printReport(string names[], int data[][Max_cols], double averages[], int numStudents){
     cout << "Gradebook" << endl;
     cout << "************************************" << endl;
-    cout << "Name Average Score  Grade" << endl;
+    cout << "Name Average Score  Grade" << endl; // format header
     cout << "*** ************* ******* " << endl;
     for(int x =0 ; x < numStudents; x++){
-        cout << names[x] << "  ";
+        cout << names[x] << "  "; //
         cout << averages[x] << "  ";
-        cout << getLetterGrade(averages[x]) << endl;
+        cout << getLetterGrade(averages[x]) << endl; // call getLetterGrade function
     }
 }
 
@@ -73,10 +73,10 @@ char getLetterGrade(double average) //function to calculate letter grade
 
 //function to calculate average test scores
 int calculateAverages(int data[][Max_cols], double averages[], int numStudents) {
-    for (int r = 0; r < numStudents; r++) {
+    for (int r = 0; r < numStudents; r++) { // loop through rows
         int sum = 0;
-        for (int c = 0; c < Max_cols; c++) {
-            sum += data[r][c];
+        for (int c = 0; c < Max_cols; c++) { // loop through columns
+            sum += data[r][c]; // sum test scores
         }
         averages[r] = sum / Max_cols;
     }
@@ -89,7 +89,7 @@ int getData(istream &inFile, string names[], int data[][Max_cols])
     {
         for(int c=0; c<Max_cols; c++) // read in test scores
         {
-            inFile >> data[records][c]; 
+            inFile >> data[records][c];  // read in test scores
         }
         records++; 
     }
@@ -105,12 +105,12 @@ int main() {
     ifstream inFile;
     inFile.open(FileName);
     if (!inFile.is_open()) { // check if file is open
-        cout << "Error opening file " << FileName << endl;
+        cout << "Error opening file " << FileName << endl; // print error message if error with file
         return 1;
     }
     numStudents = getData(inFile, names, data); // call getData function
     calculateAverages(data, averages, numStudents); // calculate averages
-    printReport(names, data, averages, numStudents);
+    printReport(names, data, averages, numStudents); // print report
     inFile.close();
     
     return 0;
