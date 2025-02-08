@@ -102,6 +102,10 @@ int playGame(string choice) {
     return computerchoice;
 }
 
+int main() {
+    displayChoice(); // start game
+    return 0;
+}
 void displayChoice() {
     string choice; // take user input
     cout << "Enter Rock, Paper, Scissors, or Quit: "; // prompts user to enter choice
@@ -128,7 +132,4 @@ void displayChoice() {
     displayChoice(); // loop back to start
 }
 
-int main() {
-    displayChoice(); // start game
-    return 0;
-}
+
