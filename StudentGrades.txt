@@ -4,3 +4,5 @@ Devon 92 98 91 100 85
 Javier 85 82 72 84 85
 Johnathan 78 60 63 79 81
 Vanessa 74 91 77 74 80
+John 75 82 49 98 29
+Alice 80 79 85 69 43
