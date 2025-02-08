@@ -80,6 +80,7 @@ int calculateAverages(int data[][Max_cols], double averages[], int numStudents) 
         }
         averages[r] = sum / Max_cols;
     }
+    return 0;
 }
 
 int getData(istream &inFile, string names[], int data[][Max_cols])
