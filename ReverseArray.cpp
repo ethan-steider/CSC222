@@ -14,42 +14,35 @@ int *ReverseArray( int const arr[], int size);
 void PrintArray( int arr[], int size);
 
 
-void PrintArray(int arr[], int size)
+void PrintArray(int arr[], int size) // function two
 {
-    for (int i = 0; i < size; i++)
+    for (int i = 0; i < size; i++) // loop through the array
     {
-        cout << arr[i] << " ";
+        cout << arr[i] << " "; // print each element
     }
     cout << endl;
 }
 
-int *ReverseArray(int const arr[], int size)
-
+int *ReverseArray(int const arr[], int size) // function one
 {
-    int *reversedArr = new int[size];
-
-    for (int i = 0; i <= size; i++)
-    {
-        reversedArr[i] = arr[size - i];
-    }
-
-    return reversedArr;
 
 }
 
 int main()
 {
+    // test with an array of size 10
     const int SIZE = 10;
     int arr[SIZE] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
     cout << "Original array: ";
-    PrintArray(arr, SIZE);
+    PrintArray(arr, SIZE); 
     cout << "Reversed array: ";
-    int *reversedArr = ReverseArray(arr, SIZE);
+    int *reversedArr = ReverseArray(arr, SIZE); 
     PrintArray(reversedArr, SIZE);
     delete[] reversedArr;
 
 
+    // test with a different array size
     const int SIZE2 = 5;
     int arr2[SIZE2] = {1, 2, 3, 4, 5};
 
