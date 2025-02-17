@@ -8,28 +8,28 @@
 
 #include <iostream>
 using namespace std;
-// function prototypes
 
-int *ReverseArray( int const arr[], int size );
-void PrintArray(int const arr[], int size);
-
-
+// Function prototypes
+int *ReverseArray( int const arr[], int size);
+void PrintArray( int arr[], int size);
 
 
-
-
-
-
-
-
-
-
+void PrintArray(int arr[], int size)
+{
+    for (int i = 0; i < size; i++)
+    {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+}
 
 int main()
 {
+    const int SIZE = 10;
+    int arr[SIZE] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
 
-
-
+    cout << "Original array: ";
+    PrintArray(arr, SIZE);
 
     return 0;
 }
