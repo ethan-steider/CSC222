@@ -25,6 +25,12 @@ void PrintArray(int arr[], int size) // function two
 
 int *ReverseArray(int const arr[], int size) // function one
 {
+    int *reversedArr = new int[size]; // dynamically allocate memory for the reversed array
+    for (int i = 0; i < size; i++) // loop through the original array
+    {
+        reversedArr[i] = arr[size - 1 - i]; // copy elements in reverse order
+    }
+    return reversedArr; // return pointer to the reversed array
 
 }
 
