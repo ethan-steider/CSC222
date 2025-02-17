@@ -26,6 +26,14 @@ void PrintArray(int arr[], int size)
 int *ReverseArray(int const arr[], int size)
 
 {
+    int *reversedArr = new int[size];
+
+    for (int i = 0; i <= size; i++)
+    {
+        reversedArr[i] = arr[size - i];
+    }
+
+    return reversedArr;
 
 }
 
