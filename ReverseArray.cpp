@@ -25,6 +25,9 @@ void PrintArray(int arr[], int size)
 
 int *ReverseArray(int const arr[], int size)
 
+{
+
+}
 
 int main()
 {
@@ -33,10 +36,21 @@ int main()
 
     cout << "Original array: ";
     PrintArray(arr, SIZE);
-
     cout << "Reversed array: ";
     int *reversedArr = ReverseArray(arr, SIZE);
     PrintArray(reversedArr, SIZE);
+    delete[] reversedArr;
 
+
+    const int SIZE2 = 5;
+    int arr2[SIZE2] = {1, 2, 3, 4, 5};
+
+    cout << "Original array: ";
+    PrintArray(arr2, SIZE2);
+    cout << "Reversed array: ";
+    int *reversedArr2 = ReverseArray(arr2, SIZE2);
+    PrintArray(reversedArr2, SIZE2);
+    delete[] reversedArr2;
     return 0;
+
 }
