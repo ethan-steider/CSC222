@@ -1,8 +1,21 @@
 // same output as GradeBook but with added student ID
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+
+// function prototypes
+int getData(istream &inFile, string names[], int data[][Max_cols]); //function to read in data from file
+char getLetterGrade(double average);   //function to calculate letter grade
+
+
 
 // a function that reads data from a file containing number of students, number of tests as header 
 //followed by records containing name, student ID, and test scores. Function assumes file is already open 
 // receives file variable as input
+
+
+
 
 // a function that reads the number of student records and the number of tests from the file. It
 // dynamically allocates an array of structs to hold the student records. It uses a loop to read
@@ -12,13 +25,20 @@
 // students and number of test scores as well
 
 
+
+
 //A function that is provided with the student data array and uses the test scores that are
 // stored there to calculate the average of the test grades and the course grade for each
 // student. These values are stored in the struct. Use the function you wrote in the original
 // version to calculate the letter grade. Here is the prototype for this function
 
-//A function that is provided with the student data array and prints a formatted report. Here is
-//an example of what the report should look like
+
+
+
+
+
+
+//A function that is provided with the student data array and prints a formatted report.
 
 
 
@@ -49,4 +69,29 @@ char getLetterGrade(double average) //function to calculate letter grade
     {
         return 'F';
     }
+}
+
+
+
+int main() {
+    string names[Max_Rows]; // array to store student names
+    int data[Max_Rows][Max_cols]; // 2d array to store test scores
+    double averages[Max_Rows]; // array to store averages
+    int numStudents;   
+    ifstream inFile; // input file stream
+    inFile.open("data.txt"); // open the input file
+    if(!inFile) // check if file opened successfully
+    {
+        cout << "Error opening file." << endl;
+        return 1;
+    }
+    numStudents = getData(inFile, names, data); // read data from file
+    calculateAverages(data, averages, numStudents); // calculate averages
+    printReport(names, data, averages, numStudents); // print report
+    inFile.close(); // close the input file
+    return 0;
+
+
+
+
 }

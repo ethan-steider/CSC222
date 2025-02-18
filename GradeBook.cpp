@@ -3,7 +3,7 @@
 #include <string>
 using namespace std;
 
-//	Write a program that averages student test scores and provides letter grades for the averages for a teacher to record in a grade book
+//  Write a program that averages student test scores and provides letter grades for the averages for a teacher to record in a grade book
 
 //read students names and test scores from a file, calculate the average test score for each student, and assign a letter grade based on the average
 // Do not assume a fixed number of students or test scores
