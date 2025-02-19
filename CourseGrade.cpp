@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <iomanip>
 using namespace std;
 
 
@@ -18,7 +19,7 @@ void getData(istream &inFile, string names[], int data[][6], int &numStudents, i
 void getDataStructs(istream &inFile, Student *&students, int &numStudents, int &numTests); //function to read in data from file
 char getLetterGrade(double average);   //function to calculate letter grade
 void printReport(Student *students, int numStudents); //function to print report
-void calculateAverages(Student *student, int numStudents, int numTests);   //function to calculate average test scores
+void calculateAverages(Student *students, int numStudents, int numTests);   //function to calculate average test scores
 
 
 
@@ -53,13 +54,9 @@ int main() {
     return 0;
 }
 
-
-
-// This function that reads a file with the number of students and tests as a header,
-// followed by records of each student’s name, ID, and test scores, it assumes the file is already opened correctly
-void getData(istream &inFile, string names[], int data[][6], int &numStudents, int Max_cols, int Max_Rows){
+void getData(istream &inFile, string names[], int data[][6], int &numStudents, int Max_cols, int Max_Rows) {
     numStudents = 0;
-    while(numStudents < Max_Rows && inFile >> names[numStudents]) { //read student name
+    while(inFile >> names[numStudents]) { //read student name
         inFile >> data[numStudents][0]; // read student ID
         for(int i = 1; i < Max_cols; i++) { // read test scores
             inFile >> data[numStudents][i];
@@ -107,16 +104,15 @@ void calculateAverages(Student *students, int numStudents, int numTests){
 void printReport(Student *students, int numStudents){
     cout << "Gradebook" << endl;
     cout << "************************************" << endl;
-    cout << "Name  ID  Average Score  Grade" << endl; // format header
-    cout << "************************ " << endl;
-    for(int x =0 ; x < numStudents; x++){
-        cout << students[x].name << "  "; 
-        cout << students[x].ID << "  ";
-        cout << students[x].average << "  ";
-        cout << students[x].grade << endl; // call getLetterGrade function
+    cout << "Name       ID   Average  Grade" << endl; // format header
+    cout << left << fixed << setprecision(2); // format output
+    for(int x = 0; x < numStudents; x++){
+        cout << setw(10) << students[x].name << " " << setw(4) << students[x].ID << " "
+         << setw(8) << students[x].average << " " << students[x].grade << endl;
     }
 }
 
+    
 
 
 // This function takes the average test score as input and returns the letter grade for the course.
