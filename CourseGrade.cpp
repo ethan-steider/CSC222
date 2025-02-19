@@ -8,7 +8,13 @@ const int Max_cols = 6;
 const int Max_Rows = 15; // global constants
 const string FileName = "StudentGrades2.txt";
 
-
+struct Student {
+    string name;
+    int ID;
+    int *testScores;
+    double average;
+    char grade;
+};
 
 // function prototypes
 void getData(istream &inFile, string names[], int data[][Max_cols]); //function to read in data from file
