@@ -79,7 +79,7 @@ void printReport(Student *students, int numStudents){
     cout << "Gradebook" << endl;
     cout << "************************************" << endl;
     cout << "Name  ID  Average Score  Grade" << endl; // format header
-    cout << "*** ************* ******* " << endl;
+    cout << "****  **  *************  ***** " << endl;
     for(int x =0 ; x < numStudents; x++){
         cout << students[x].name << "  "; 
         cout << students[x].ID << "  ";
@@ -130,7 +130,6 @@ int main() {
         return 1;
     }
     getData(inFile, names, data); // read data from file
-    Student *students;
     getData(inFile, students, numStudents, numTests); // read data from file
     calculateAverages(students, numStudents, numTests); // calculate averages
     printReport(students, numStudents); // print report
