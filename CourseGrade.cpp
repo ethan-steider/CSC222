@@ -44,11 +44,11 @@ void getData(istream &inFile, string names[], int data[][Max_cols]) {
 // scores for the record, it dynamically allocates an array to hold the test scores. When the
 // function completes, it returns the pointer to the array structs and also returns the number of
 // students and number of test scores as well
-int getData(istream &inFile, Student *&students, int &numStudents, int &numTests){
-    inFile >> numStudents: // read number of students
+void getData(istream &inFile, Student *&students, int &numStudents, int &numTests){
+    inFile >> numStudents; // read number of students
     inFile >> numTests; // read number of tests
     students = new Student[numStudents]; // dynamically allocate array of structs
-    for (int x = 0: x < numStudents; x++){
+    for (int x = 0; x < numStudents; x++){
         inFile >> students[x].name; // read student name
         inFile >> students[x].ID; // read student ID
         students[x].testScores = new int[numTests]; // dynamically allocate array of test scores
@@ -57,7 +57,6 @@ int getData(istream &inFile, Student *&students, int &numStudents, int &numTests
         }
 
     }
-    return numstudents;
 }
 
 // A function that is provided with the student data array and uses the test scores that are
@@ -119,9 +118,10 @@ char getLetterGrade(double average) //function to calculate letter grade
 
 int main() {
     string names[Max_Rows]; // array to store student names
-    int data[Max_Rows][Max_cols]; // 2d array to store test scores
-    double averages[Max_Rows]; // array to store averages
+    int data[Max_Rows][Max_cols]; // array to store test scores
+    int numTests;
     int numStudents;   
+    Student *students; // array of structs to store student data
     ifstream inFile; // input file stream
     inFile.open(FileName); // open the input file
     if(!inFile) // check if file opened successfully
@@ -129,9 +129,11 @@ int main() {
         cout << "Error opening file." << endl;
         return 1;
     }
-    numStudents = getData(inFile, names, data); // read data from file
-    calculateAverages(data, averages, numStudents); // calculate averages
-    printReport(names, data, averages, numStudents); // print report
+    getData(inFile, names, data); // read data from file
+    Student *students;
+    getData(inFile, students, numStudents, numTests); // read data from file
+    calculateAverages(students, numStudents, numTests); // calculate averages
+    printReport(students, numStudents); // print report
     inFile.close(); // close the input file
     return 0;
 
