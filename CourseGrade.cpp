@@ -45,8 +45,20 @@ void getData(istream &inFile, string names[], int data[][Max_cols]) {
 // function completes, it returns the pointer to the array structs and also returns the number of
 // students and number of test scores as well
 int getData(istream &inFile, Student *&students, int &numStudents, int &numTests){
+    inFile >> numStudents: // read number of students
+    inFile >> numTests; // read number of tests
+    students = new Student[numStudents]; // dynamically allocate array of structs
+    for (int x = 0: x < numStudents; x++){
+        inFile >> students[x].name; // read student name
+        inFile >> students[x].ID; // read student ID
+        students[x].testScores = new int[numTests]; // dynamically allocate array of test scores
+        for(int y = 0; y <= numTests; y++){
+            inFile >> students[x].testScores[y]; // read test scores
+        }
 
-
+    }
+    return numstudents;
+}
 
 // A function that is provided with the student data array and uses the test scores that are
 // stored there to calculate the average of the test grades and the course grade for each
@@ -61,10 +73,6 @@ void calculateAverages(Student *students, int numStudents, int numTests){
         students[x].grade = getLetterGrade(students[x].average);
     }
 }
-
-
-
- 
 
 
 // A function that is provided with the student data array and prints a formatted report.
