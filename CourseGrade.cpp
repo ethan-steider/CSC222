@@ -20,20 +20,20 @@ struct Student {
 void getData(istream &inFile, string names[], int data[][Max_cols]); //function to read in data from file
 void getData(istream &inFile, Student *&students, int &numStudents, int &numTests);
 char getLetterGrade(double average);   //function to calculate letter grade
-void printReport(Student *students, int numStudents, int numTests);
-void calculateAverages(int data[][Max_cols], double averages[], int numStudents);   //function to calculate average test scores
+void printReport(Student *students, int numStudents);
+void calculateAverages(Student *student, int numStudents, int numTests);   //function to calculate average test scores
 
 // a function that reads data from a file containing number of students, number of tests as header 
 // followed by records containing name, student ID, and test scores. Function assumes file is already open 
 // receives file variable as input
-void getData(istream &inFile, string names[], int data[][Max_cols]) {
-    int records = 0;
-    while(inFile >> names[records]) { //read student name
-        inFile >> data[records][0]; // read student ID
-        for(int i = 1; i <= Max_cols; i++) { // read test scores
-            inFile >> data[records][i];
+void getData(istream &inFile, string names[], int data[][Max_cols], int &numStudents){
+    numStudents = 0;
+    while(inFile >> names[numStudents]) { //read student name
+        inFile >> data[numStudents][0]; // read student ID
+        for(int i = 1; i < Max_cols; i++) { // read test scores
+            inFile >> data[numStudents][i];
         }
-        records++;
+        numStudents++;
     }
 }
 
@@ -52,10 +52,9 @@ void getData(istream &inFile, Student *&students, int &numStudents, int &numTest
         inFile >> students[x].name; // read student name
         inFile >> students[x].ID; // read student ID
         students[x].testScores = new int[numTests]; // dynamically allocate array of test scores
-        for(int y = 0; y <= numTests; y++){
+        for(int y = 0; y < numTests; y++){
             inFile >> students[x].testScores[y]; // read test scores
         }
-
     }
 }
 
@@ -79,7 +78,7 @@ void printReport(Student *students, int numStudents){
     cout << "Gradebook" << endl;
     cout << "************************************" << endl;
     cout << "Name  ID  Average Score  Grade" << endl; // format header
-    cout << "****  **  *************  ***** " << endl;
+    cout << "************************ " << endl;
     for(int x =0 ; x < numStudents; x++){
         cout << students[x].name << "  "; 
         cout << students[x].ID << "  ";
@@ -129,14 +128,15 @@ int main() {
         cout << "Error opening file." << endl;
         return 1;
     }
-    getData(inFile, names, data); // read data from file
+
     getData(inFile, students, numStudents, numTests); // read data from file
     calculateAverages(students, numStudents, numTests); // calculate averages
     printReport(students, numStudents); // print report
+
+    for(int x = 0; x < numStudents; x++){
+        delete[] students[x].testScores; // deallocate test scores
+    }
+    delete[] students; // deallocate students
     inFile.close(); // close the input file
     return 0;
-
-
-
-
 }
