@@ -3,9 +3,7 @@
 #include <string>
 using namespace std;
 
-const int Max_cols = 6;
-const int Max_Rows = 15; // global constants
-const string FileName = "StudentGrades2.txt";
+
 
 struct Student {
     string name;
@@ -25,6 +23,9 @@ void calculateAverages(Student *student, int numStudents, int numTests);   //fun
 
 
 int main() {
+    const int Max_cols = 6;
+    const int Max_Rows = 15; // global constants
+    const string FileName = "StudentGrades2.txt";
     string names[Max_Rows]; // array to store student names
     int data[Max_Rows][Max_cols]; // array to store test scores
     int numTests;
