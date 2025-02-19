@@ -4,7 +4,7 @@
 using namespace std;
 
 
-
+// struct to store student data
 struct Student {
     string name;
     int ID;
@@ -53,6 +53,8 @@ int main() {
     return 0;
 }
 
+
+
 // This function that reads a file with the number of students and tests as a header,
 // followed by records of each student’s name, ID, and test scores, it assumes the file is already opened correctly
 void getData(istream &inFile, string names[], int data[][6], int &numStudents, int Max_cols, int Max_Rows){
@@ -83,6 +85,8 @@ void getDataStructs(istream &inFile, Student *&students, int &numStudents, int &
     }
 }
 
+
+
 // This function receives the student data array, the number of students, and the number of tests
 // as input parameters. It calculates the average test score for each student and the letter grade
 // for the course. It stores these values in the struct for each student.
@@ -98,6 +102,7 @@ void calculateAverages(Student *students, int numStudents, int numTests){
 }
 
 
+
 // A function that is provided with the student data array and prints a formatted report.
 void printReport(Student *students, int numStudents){
     cout << "Gradebook" << endl;
@@ -111,6 +116,8 @@ void printReport(Student *students, int numStudents){
         cout << students[x].grade << endl; // call getLetterGrade function
     }
 }
+
+
 
 // This function takes the average test score as input and returns the letter grade for the course.
 char getLetterGrade(double average) 
