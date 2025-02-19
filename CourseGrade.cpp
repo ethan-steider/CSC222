@@ -14,7 +14,7 @@ struct Student {
 };
 
 // function prototypes
-void getData(istream &inFile, string names[], int data[][Max_cols]); //function to read in data from file
+void getData(istream &inFile, string names[], int data[][6], int Max_cols, int Max_Rows); //function to read in data from file
 void getData(istream &inFile, Student *&students, int &numStudents, int &numTests); //function to read in data from file
 char getLetterGrade(double average);   //function to calculate letter grade
 void printReport(Student *students, int numStudents); //function to print report
@@ -31,6 +31,7 @@ int main() {
     int numTests;
     int numStudents;   
     Student *students; // array of structs to store student data
+
     ifstream inFile; // input file stream
     inFile.open(FileName); // open the input file
     if(!inFile) // check if file opened successfully
@@ -39,6 +40,7 @@ int main() {
         return 1;
     }
 
+    getData(inFile, names, data, numStudents, Max_cols, Max_Rows); // read data from file
     getData(inFile, students, numStudents, numTests); // read data from file
     calculateAverages(students, numStudents, numTests); // calculate averages
     printReport(students, numStudents); // print report
@@ -53,7 +55,7 @@ int main() {
 
 // This function that reads a file with the number of students and tests as a header,
 // followed by records of each student’s name, ID, and test scores, it assumes the file is already opened correctly
-void getData(istream &inFile, string names[], int data[][Max_cols], int &numStudents){
+void getData(istream &inFile, string names[], int data[][6], int &numStudents, int Max_cols, int Max_Rows){
     numStudents = 0;
     while(inFile >> names[numStudents]) { //read student name
         inFile >> data[numStudents][0]; // read student ID
