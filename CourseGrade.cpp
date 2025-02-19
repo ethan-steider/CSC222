@@ -42,6 +42,10 @@ int main() {
     }
 
     getData(inFile, names, data, numStudents, Max_cols, Max_Rows); // read data from file
+
+    inFile.clear();   // Clear error flags
+    inFile.seekg(0);  // Reset file pointer
+
     getDataStructs(inFile, students, numStudents, numTests); // read data from file
     calculateAverages(students, numStudents, numTests); // calculate averages
     printReport(students, numStudents); // print report
