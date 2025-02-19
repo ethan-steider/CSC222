@@ -8,6 +8,8 @@ const int Max_cols = 6;
 const int Max_Rows = 15; // global constants
 const string FileName = "StudentGrades2.txt";
 
+
+
 // function prototypes
 void getData(istream &inFile, string names[], int data[][Max_cols]); //function to read in data from file
 void getData(istream &inFile, Student *&students, int &numStudents, int &numTests);
@@ -37,7 +39,6 @@ void getData(istream &inFile, string names[], int data[][Max_cols]) {
 // function completes, it returns the pointer to the array structs and also returns the number of
 // students and number of test scores as well
 int getData(istream &inFile, Student *&students, int &numStudents, int &numTests){
-
 
 
 
