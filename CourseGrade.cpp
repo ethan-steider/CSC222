@@ -4,20 +4,21 @@
 #include <string>
 using namespace std;
 
-const int Max_cols = 5;
+const int Max_cols = 6;
 const int Max_Rows = 15; // global constants
 const string FileName = "StudentGrades2.txt";
 
 // function prototypes
-int getData(istream &inFile, string names[], int data[][Max_cols]); //function to read in data from file
+void getData(istream &inFile, string names[], int data[][Max_cols]); //function to read in data from file
+void getData(istream &inFile, Student *&students, int &numStudents, int &numTests);
 char getLetterGrade(double average);   //function to calculate letter grade
 void printReport(Student *students, int numStudents, int numTests);
-int calculateAverages(int data[][Max_cols], double averages[], int numStudents);   //function to calculate average test scores
+void calculateAverages(int data[][Max_cols], double averages[], int numStudents);   //function to calculate average test scores
 
 // a function that reads data from a file containing number of students, number of tests as header 
 // followed by records containing name, student ID, and test scores. Function assumes file is already open 
 // receives file variable as input
-int getData(istream &inFile, string names[], int data[][Max_cols]) {
+void getData(istream &inFile, string names[], int data[][Max_cols]) {
     int records = 0;
     while(inFile >> names[records]) { //read student name
         inFile >> data[records][0]; // read student ID
@@ -26,7 +27,6 @@ int getData(istream &inFile, string names[], int data[][Max_cols]) {
         }
         records++;
     }
-    return records;
 }
 
 
@@ -39,14 +39,12 @@ int getData(istream &inFile, string names[], int data[][Max_cols]) {
 int getData(istream &inFile, Student *&students, int &numStudents, int &numTests){
 
 
-}
-
 
 
 // A function that is provided with the student data array and uses the test scores that are
 // stored there to calculate the average of the test grades and the course grade for each
 // student. These values are stored in the struct.
-int calculateAverages(Student *students, int numStudents, int numTests){
+void calculateAverages(Student *students, int numStudents, int numTests){
     for(int x = 0; x < numStudents; x++){
         double total = 0;
         for(int y = 0; y < numTests; y++){
@@ -63,15 +61,15 @@ int calculateAverages(Student *students, int numStudents, int numTests){
 
 
 // A function that is provided with the student data array and prints a formatted report.
-void printReport(Student *students, int numStudents, int numTests){
+void printReport(Student *students, int numStudents){
     cout << "Gradebook" << endl;
     cout << "************************************" << endl;
-    cout << "Name Average Score  Grade" << endl; // format header
+    cout << "Name  ID  Average Score  Grade" << endl; // format header
     cout << "*** ************* ******* " << endl;
     for(int x =0 ; x < numStudents; x++){
         cout << students[x].name << "  "; 
-        cout << students[x].average << "  ";
         cout << students[x].ID << "  ";
+        cout << students[x].average << "  ";
         cout << students[x].grade << endl; // call getLetterGrade function
     }
 }
@@ -110,7 +108,7 @@ int main() {
     double averages[Max_Rows]; // array to store averages
     int numStudents;   
     ifstream inFile; // input file stream
-    inFile.open("data.txt"); // open the input file
+    inFile.open(FileName); // open the input file
     if(!inFile) // check if file opened successfully
     {
         cout << "Error opening file." << endl;
