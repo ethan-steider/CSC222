@@ -14,8 +14,8 @@ struct Student {
 };
 
 // function prototypes
-void getData(istream &inFile, string names[], int data[][6], int Max_cols, int Max_Rows); //function to read in data from file
-void getData(istream &inFile, Student *&students, int &numStudents, int &numTests); //function to read in data from file
+void getData(istream &inFile, string names[], int data[][6], int &numStudents, int Max_cols, int Max_Rows); //function to read in data from file
+void getDataStructs(istream &inFile, Student *&students, int &numStudents, int &numTests); //function to read in data from file
 char getLetterGrade(double average);   //function to calculate letter grade
 void printReport(Student *students, int numStudents); //function to print report
 void calculateAverages(Student *student, int numStudents, int numTests);   //function to calculate average test scores
@@ -41,7 +41,7 @@ int main() {
     }
 
     getData(inFile, names, data, numStudents, Max_cols, Max_Rows); // read data from file
-    getData(inFile, students, numStudents, numTests); // read data from file
+    getDataStructs(inFile, students, numStudents, numTests); // read data from file
     calculateAverages(students, numStudents, numTests); // calculate averages
     printReport(students, numStudents); // print report
 
@@ -57,7 +57,7 @@ int main() {
 // followed by records of each student’s name, ID, and test scores, it assumes the file is already opened correctly
 void getData(istream &inFile, string names[], int data[][6], int &numStudents, int Max_cols, int Max_Rows){
     numStudents = 0;
-    while(inFile >> names[numStudents]) { //read student name
+    while(numStudents < Max_Rows && inFile >> names[numStudents]) { //read student name
         inFile >> data[numStudents][0]; // read student ID
         for(int i = 1; i < Max_cols; i++) { // read test scores
             inFile >> data[numStudents][i];
@@ -69,7 +69,7 @@ void getData(istream &inFile, string names[], int data[][6], int &numStudents, i
 
 
 // This function reads the student data from the file and stores it in an array of structs
-void getData(istream &inFile, Student *&students, int &numStudents, int &numTests){
+void getDataStructs(istream &inFile, Student *&students, int &numStudents, int &numTests){
     inFile >> numStudents; // read number of students
     inFile >> numTests; // read number of tests
     students = new Student[numStudents]; // dynamically allocate array of structs
