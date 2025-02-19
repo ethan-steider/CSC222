@@ -6,7 +6,7 @@ using namespace std;
 
 const int Max_cols = 5;
 const int Max_Rows = 15; // global constants
-const string FileName = "StudentGrades.txt";
+const string FileName = "StudentGrades2.txt";
 
 // function prototypes
 int getData(istream &inFile, string names[], int data[][Max_cols]); //function to read in data from file
@@ -59,7 +59,7 @@ int calculateAverages(Student *students, int numStudents, int numTests){
 
 
 
-
+ 
 
 
 // A function that is provided with the student data array and prints a formatted report.
