@@ -11,14 +11,15 @@ const string FileName = "StudentGrades.txt";
 // function prototypes
 int getData(istream &inFile, string names[], int data[][Max_cols]); //function to read in data from file
 char getLetterGrade(double average);   //function to calculate letter grade
-
+void printReport(Student *students, int numStudents, int numTests);
+int calculateAverages(int data[][Max_cols], double averages[], int numStudents);   //function to calculate average test scores
 
 // a function that reads data from a file containing number of students, number of tests as header 
 // followed by records containing name, student ID, and test scores. Function assumes file is already open 
 // receives file variable as input
 int getData(istream &inFile, string names[], int data[][Max_cols]) {
     int records = 0;
-    while(inFile >> names[records]) { // read name
+    while(inFile >> names[records]) { //read student name
         inFile >> data[records][0]; // read student ID
         for(int i = 1; i <= Max_cols; i++) { // read test scores
             inFile >> data[records][i];
@@ -35,15 +36,26 @@ int getData(istream &inFile, string names[], int data[][Max_cols]) {
 // scores for the record, it dynamically allocates an array to hold the test scores. When the
 // function completes, it returns the pointer to the array structs and also returns the number of
 // students and number of test scores as well
+int getData(istream &inFile, Student *&students, int &numStudents, int &numTests){
 
+
+}
 
 
 
 // A function that is provided with the student data array and uses the test scores that are
 // stored there to calculate the average of the test grades and the course grade for each
-// student. These values are stored in the struct. Use the function you wrote in the original
-// version to calculate the letter grade. Here is the prototype for this function
-
+// student. These values are stored in the struct.
+int calculateAverages(Student *students, int numStudents, int numTests){
+    for(int x = 0; x < numStudents; x++){
+        double total = 0;
+        for(int y = 0; y < numTests; y++){
+            total += students[x].testScores[y];
+        }
+        students[x].average = total / numTests;
+        students[x].grade = getLetterGrade(students[x].average);
+    }
+}
 
 
 
@@ -51,11 +63,18 @@ int getData(istream &inFile, string names[], int data[][Max_cols]) {
 
 
 // A function that is provided with the student data array and prints a formatted report.
-
-
-
-
-
+void printReport(Student *students, int numStudents, int numTests){
+    cout << "Gradebook" << endl;
+    cout << "************************************" << endl;
+    cout << "Name Average Score  Grade" << endl; // format header
+    cout << "*** ************* ******* " << endl;
+    for(int x =0 ; x < numStudents; x++){
+        cout << students[x].name << "  "; 
+        cout << students[x].average << "  ";
+        cout << students[x].ID << "  ";
+        cout << students[x].grade << endl; // call getLetterGrade function
+    }
+}
 
 //The function from the original version of the program that receives the average test score
 //and returns the letter grade.
