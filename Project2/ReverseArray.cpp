@@ -1,38 +1,12 @@
-// program populated array with values
-//function then called to reverse the array
-// memory is deallocated in the function before it terminates
-// function one reverses array by dynamicly creating array of size of input parameter
-// then it copies the values from the input array to the new array in reverse order
-// receives a constant array and its size returns pointer to the new array
-// function two receives a constant array and its size then displays the contents of the array
-
 #include <iostream>
 using namespace std;
 
+
 // Function prototypes
-int *ReverseArray( int const arr[], int size);
-void PrintArray( int arr[], int size);
+int *ReverseArray( int const arr[], int size); // function to reverse the array using pointers
+void PrintArray( int arr[], int size); // function to print the array
 
 
-void PrintArray(int arr[], int size) // function two
-{
-    for (int i = 0; i < size; i++) // loop through the array
-    {
-        cout << arr[i] << " "; // print each element
-    }
-    cout << endl;
-}
-
-int *ReverseArray(int const arr[], int size) // function one
-{
-    int *reversedArr = new int[size]; // dynamically allocate memory for the reversed array
-    for (int i = 0; i < size; i++) // loop through the original array
-    {
-        reversedArr[i] = arr[size - 1 - i]; // copy elements in reverse order
-    }
-    return reversedArr; // return pointer to the reversed array
-
-}
 
 int main()
 {
@@ -61,3 +35,25 @@ int main()
     return 0;
 
 }
+
+
+void PrintArray(int arr[], int size) 
+{
+    for (int i = 0; i < size; i++) // loop through the array
+    {
+        cout << arr[i] << " "; // print each element
+    }
+    cout << endl;
+}
+
+int *ReverseArray(int const arr[], int size) 
+{
+    int *reversedArr = new int[size]; // dynamically allocate memory for the reversed array
+    for (int i = 0; i < size; i++) // loop through the original array
+    {
+        reversedArr[i] = arr[size - 1 - i]; // copy elements in reverse order
+    }
+    return reversedArr; // return pointer to the reversed array
+
+}
+
