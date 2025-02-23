@@ -22,7 +22,7 @@ void printReport(Student *students, int numStudents); //function to print report
 void calculateAverages(Student *students, int numStudents, int numTests);   //function to calculate average test scores
 
 
-
+// testing push to branch
 int main() {
     const int Max_cols = 6;
     const int Max_Rows = 15; // global constants
