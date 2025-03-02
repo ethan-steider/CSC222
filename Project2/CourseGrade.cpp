@@ -91,6 +91,10 @@ void calcAverage(student students[], int studentCnt, int testsCnt)
             students[i].Average += students[i].Tests[j]; // add up all test scores
         }
         students[i].Average = students[i].Average / testsCnt; // divide by number of tests to get average
+        if (students[i].Average < 0) // check if average is less than 0
+        {
+            students[i].Average = 0; // set average to 0
+        }
         students[i].Grade = getLetterGrade(students[i].Average); // get letter grade
     }
 }
