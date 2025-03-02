@@ -30,17 +30,18 @@ int main() {
 }
 
 
-void calcAverage(student students[]. int studentCnt, int testsCnt)
+void calcAverage(student students[], int studentCnt, int testsCnt)
 {
-    int i, j = 0;
-    for (i < studentCnt; i++)
+    for (int i = 0; i < studentCnt; i++)
     {
-        for (j < testsCnt; j++)
+        students[i].average = 0; // make average 0 tp start
+
+        for (int j = 0; j < testsCnt; j++)
         {
-            students[i].average += students[i].testScores[j];
+            students[i].average += students[i].testScores[j]; // add up all test scores
         }
-        students[i].average = students[i].average / testsCnt;
-        students[i].letterGrade = getLetterGrade(students[i].average);
+        students[i].average = students[i].average / testsCnt; // divide by number of tests to get average
+        students[i].letterGrade = getLetterGrade(students[i].average); // get letter grade
     }
 }
 
