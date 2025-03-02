@@ -12,10 +12,8 @@ void printReport(student students[], int studentCnt, int testsCnt); //function t
 
 string FileName = "StudentGrades2.txt"; // global constant
 
-// testing push to branch
 int main() {
-    const int Max_cols = 6;
-    const int Max_Rows = 15; // global constants
+    const int Max_Rows = 15; 
  
 
     ifstream inFile; // input file stream
@@ -27,11 +25,27 @@ int main() {
 
 
 
-}
-
 // This function reads the data from the input file and stores it in an array of student structures.
+student* getData(ifstream& file, int& studentCnt, int& testsCnt)
+{
+    file >> studentCnt
+    file >> testsCnt
 
+    student* students = new student[studentCnt]; // create array of student structures
 
+    for (int i = 0; i < studentCnt; i++)
+    {
+        file >> students[i].studentID;
+        file >> students[i].lastName;
+        file >> students[i].firstName;
+
+        for (int j = 0; j < testsCnt; j++)
+        {
+            file >> students[i].testScores[j];
+        }
+    }
+    return students;
+}
 
 // This function prints the report to the console.
 void printReport(student students[], int studentCnt, int testsCnt)
