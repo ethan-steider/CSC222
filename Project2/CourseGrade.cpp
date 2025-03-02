@@ -9,8 +9,7 @@ using namespace std;
 struct student
 {
     int studentID;
-    string lastName;
-    string firstName;
+    string Name;
     double *testScores;
     double average;
     char letterGrade;
@@ -33,16 +32,17 @@ int main() {
     if(!inFile) // check if file opened successfully
     {
         cout << "Error opening file." << endl;
+        return 1;
     }
 
     int studentCnt = 0 ; 
     int testsCnt = 0; 
 
-    student* students = getData(inFile, studentCnt, testsCnt); 
-    calcAverage(students, studentCnt, testsCnt); 
-    printReport(students, studentCnt, testsCnt); 
+    student* students = getData(inFile, studentCnt, testsCnt); // get the data from the input file
+    calcAverage(students, studentCnt, testsCnt); // calculate the average and letter grade for each student
+    printReport(students, studentCnt, testsCnt); // print the report to the console
 
-    delete[] students; s
+    delete[] students; 
     inFile.close(); 
 
     return 0;
@@ -56,11 +56,13 @@ student* getData(ifstream& file, int& studentCnt, int& testsCnt)
 
     student* students = new student[studentCnt]; // create array of student structures
 
-    for (int i = 0; i < studentCnt; i++)
+    for (int i = 0; i < studentCnt; i++) // loop through each student
     {
+   
+        file >> students[i].Name;
         file >> students[i].studentID;
-        file >> students[i].lastName;
-        file >> students[i].firstName;
+
+        students[i].testScores = new double[testsCnt]; 
 
         for (int j = 0; j < testsCnt; j++)
         {
@@ -73,10 +75,10 @@ student* getData(ifstream& file, int& studentCnt, int& testsCnt)
 // This function prints the report to the console.
 void printReport(student students[], int studentCnt, int testsCnt)
 {
-    cout << "Student ID" << setw(10) << "Last Name" << setw(10) << "First Name" << setw(10) << "Average" << setw(10) << "Grade" << endl;
+    cout << "Student ID" << setw(10) << "Name" << setw(10) << "Average" << setw(10) << "Grade" << endl;
     for (int i = 0; i < studentCnt; i++)
     {
-        cout << students[i].studentID << setw(10) << students[i].lastName << setw(10) << students[i].firstName << setw(10) << students[i].average << setw(10) << students[i].letterGrade << endl;
+        cout << students[i].studentID << setw(17) << students[i].Name << setw(10) << students[i].average << setw(10) << students[i].letterGrade << endl;
     }
 }
 
