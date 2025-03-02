@@ -8,11 +8,11 @@ using namespace std;
 // structure to hold student data
 struct student
 {
-    int studentID;
+    int idNum;
     string Name;
-    double *testScores;
-    double average;
-    char letterGrade;
+    double *Tests;
+    double Average;
+    char Grade;
 };
 
 // function prototypes from outline
@@ -57,13 +57,13 @@ student* getData(ifstream& file, int& studentCnt, int& testsCnt)
     for (int i = 0; i < studentCnt; i++) // loop through each student
     {
         file >> students[i].Name;
-        file >> students[i].studentID;
+        file >> students[i].idNum;
 
-        students[i].testScores = new double[testsCnt]; 
+        students[i].Tests = new double[testsCnt]; 
 
         for (int j = 0; j < testsCnt; j++) 
         {
-            file >> students[i].testScores[j];
+            file >> students[i].Tests[j];
         }
     }
     return students;
@@ -75,7 +75,7 @@ void printReport(student students[], int studentCnt, int testsCnt)
     cout << "Student ID" << setw(10) << "Name" << setw(10) << "Average" << setw(10) << "Grade" << endl;
     for (int i = 0; i < studentCnt; i++)
     {
-        cout << students[i].studentID << setw(17) << students[i].Name << setw(10) << students[i].average << setw(10) << students[i].letterGrade << endl;
+        cout << students[i].idNum << setw(17) << students[i].Name << setw(10) << students[i].Average << setw(10) << students[i].Grade << endl;
     }
 }
 
@@ -84,14 +84,14 @@ void calcAverage(student students[], int studentCnt, int testsCnt)
 {
     for (int i = 0; i < studentCnt; i++)
     {
-        students[i].average = 0; // make average 0 tp start
+        students[i].Average = 0; // make average 0 tp start
 
         for (int j = 0; j < testsCnt; j++)
         {
-            students[i].average += students[i].testScores[j]; // add up all test scores
+            students[i].Average += students[i].Tests[j]; // add up all test scores
         }
-        students[i].average = students[i].average / testsCnt; // divide by number of tests to get average
-        students[i].letterGrade = getLetterGrade(students[i].average); // get letter grade
+        students[i].Average = students[i].Average / testsCnt; // divide by number of tests to get average
+        students[i].Grade = getLetterGrade(students[i].Average); // get letter grade
     }
 }
 
