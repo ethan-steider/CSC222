@@ -4,14 +4,11 @@
 #include <iomanip>
 using namespace std;
 
-
-
 // function prototypes
-
 char getLetterGrade(double average);   //function to calculate letter grade
-student* getData(ifstream& file, int& studentCnt, int& testsCnt);
-void calcAverage(student students[], int studentCnt, int testsCnt)
-void printReport(student students[], int studentCnt, int testsCnt);
+student* getData(ifstream& file, int& studentCnt, int& testsCnt); //function to get data from file
+void calcAverage(student students[], int studentCnt, int testsCnt) //function to calculate average
+void printReport(student students[], int studentCnt, int testsCnt); //function to print report
 
 
 // testing push to branch
@@ -27,14 +24,6 @@ int main() {
         cout << "Error opening file." << endl;
         return 1;
     }
-
-    
-
- 
-
-
-
-
 
 // This function takes the average test score as input and returns the letter grade for the course.
 char getLetterGrade(double average) 
@@ -60,5 +49,3 @@ char getLetterGrade(double average)
         return 'F';
     }
 }
-
-
