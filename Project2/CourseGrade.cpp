@@ -9,8 +9,9 @@ using namespace std;
 // function prototypes
 
 char getLetterGrade(double average);   //function to calculate letter grade
-
-
+student* getData(ifstream& file, int& studentCnt, int& testsCnt);
+void calcAverage(student students[], int studentCnt, int testsCnt)
+void printReport(student students[], int studentCnt, int testsCnt);
 
 
 // testing push to branch
@@ -26,6 +27,8 @@ int main() {
         cout << "Error opening file." << endl;
         return 1;
     }
+
+    
 
  
 
