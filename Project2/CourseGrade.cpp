@@ -25,6 +25,25 @@ int main() {
         return 1;
     }
 
+
+
+}
+
+
+void calcAverage(student students[]. int studentCnt, int testsCnt)
+{
+    int i, j = 0;
+    for (i < studentCnt; i++)
+    {
+        for (j < testsCnt; j++)
+        {
+            students[i].average += students[i].testScores[j];
+        }
+        students[i].average = students[i].average / testsCnt;
+        students[i].letterGrade = getLetterGrade(students[i].average);
+    }
+}
+
 // This function takes the average test score as input and returns the letter grade for the course.
 char getLetterGrade(double average) 
 {
