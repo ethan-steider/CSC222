@@ -14,7 +14,7 @@ struct student
     double *testScores;
     double average;
     char letterGrade;
-}
+};
 
 // function prototypes
 char getLetterGrade(double average);   //function to calculate letter grade
@@ -35,7 +35,17 @@ int main() {
         cout << "Error opening file." << endl;
     }
 
+    int studentCnt = 0 ; 
+    int testsCnt = 0; 
 
+    student* students = getData(inFile, studentCnt, testsCnt); 
+    calcAverage(students, studentCnt, testsCnt); 
+    printReport(students, studentCnt, testsCnt); 
+
+    delete[] students; s
+    inFile.close(); 
+
+    return 0;
 }
 
 // This function reads the data from the input file and stores it in an array of student structures.
