@@ -15,30 +15,30 @@ struct student
     char Grade;
 };
 
-// function prototypes from outline
-char getLetterGrade(double average);   //function to calculate letter grade
-student* getData(ifstream& file, int& studentCnt, int& testsCnt); //function to get data from file
-void calcAverage(student students[], int studentCnt, int testsCnt); //function to calculate average
-void printReport(student students[], int studentCnt, int testsCnt); //function to print report
+// Function prototypes from outline
+char getLetterGrade(double average);   // Function to calculate letter grade
+student* getData(ifstream& file, int& studentCnt, int& testsCnt); // Function to get data from file
+void calcAverage(student students[], int studentCnt, int testsCnt); // Function to calculate average
+void printReport(student students[], int studentCnt, int testsCnt); // Function to print report
 
-string FileName = "StudentGrades2.txt"; // global variable for file name
+string FileName = "StudentGrades2.txt"; // Global variable for file name
 
 int main() {
 
-    ifstream inFile; // input file stream
-    inFile.open(FileName); // open the input file
-    if(!inFile) // check if file opened successfully
+    ifstream inFile; // Input file stream
+    inFile.open(FileName); // Open the input file
+    if(!inFile) // Check if file opened successfully
     {
         cout << "Error opening file." << endl;
-        return 1; // exit program
+        return 1; // Exit program
     }
 
     int studentCnt = 0 ; 
     int testsCnt = 0; 
 
-    student* students = getData(inFile, studentCnt, testsCnt); // get the data from the input file
-    calcAverage(students, studentCnt, testsCnt); // calculate the average and letter grade for each student
-    printReport(students, studentCnt, testsCnt); // print the report to the console
+    student* students = getData(inFile, studentCnt, testsCnt); // Get the data from the input file
+    calcAverage(students, studentCnt, testsCnt); // Calculate the average and letter grade for each student
+    printReport(students, studentCnt, testsCnt); // Print the report to the console
 
     delete[] students; 
     inFile.close(); 
@@ -52,9 +52,9 @@ student* getData(ifstream& file, int& studentCnt, int& testsCnt)
     file >> studentCnt;
     file >> testsCnt;
 
-    student* students = new student[studentCnt]; // create array of student structures
+    student* students = new student[studentCnt]; // Create array of student structures
 
-    for (int i = 0; i < studentCnt; i++) // loop through each student
+    for (int i = 0; i < studentCnt; i++) // Loop through each student
     {
         file >> students[i].Name;
         file >> students[i].idNum;
@@ -84,18 +84,18 @@ void calcAverage(student students[], int studentCnt, int testsCnt)
 {
     for (int i = 0; i < studentCnt; i++)
     {
-        students[i].Average = 0; // make average 0 tp start
+        students[i].Average = 0; // Make average 0 to start
 
         for (int j = 0; j < testsCnt; j++)
         {
-            students[i].Average += students[i].Tests[j]; // add up all test scores
+            students[i].Average += students[i].Tests[j]; // Add up all test scores
         }
-        students[i].Average = students[i].Average / testsCnt; // divide by number of tests to get average
-        if (students[i].Average < 0) // check if average is less than 0
+        students[i].Average = students[i].Average / testsCnt; // Divide by number of tests to get average
+        if (students[i].Average < 0) // Check if average is less than 0
         {
-            students[i].Average = 0; // set average to 0
+            students[i].Average = 0; // Set average to 0
         }
-        students[i].Grade = getLetterGrade(students[i].Average); // get letter grade
+        students[i].Grade = getLetterGrade(students[i].Average); // Get letter grade
     }
 }
 
