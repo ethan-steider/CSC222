@@ -15,24 +15,22 @@ struct student
     char letterGrade;
 };
 
-// function prototypes
+// function prototypes from outline
 char getLetterGrade(double average);   //function to calculate letter grade
 student* getData(ifstream& file, int& studentCnt, int& testsCnt); //function to get data from file
 void calcAverage(student students[], int studentCnt, int testsCnt); //function to calculate average
 void printReport(student students[], int studentCnt, int testsCnt); //function to print report
 
-string FileName = "StudentGrades2.txt"; // global constant
+string FileName = "StudentGrades2.txt"; // global variable for file name
 
 int main() {
-    const int Max_Rows = 15; 
- 
 
     ifstream inFile; // input file stream
     inFile.open(FileName); // open the input file
     if(!inFile) // check if file opened successfully
     {
         cout << "Error opening file." << endl;
-        return 1;
+        return 1; // exit program
     }
 
     int studentCnt = 0 ; 
@@ -58,13 +56,12 @@ student* getData(ifstream& file, int& studentCnt, int& testsCnt)
 
     for (int i = 0; i < studentCnt; i++) // loop through each student
     {
-   
         file >> students[i].Name;
         file >> students[i].studentID;
 
         students[i].testScores = new double[testsCnt]; 
 
-        for (int j = 0; j < testsCnt; j++)
+        for (int j = 0; j < testsCnt; j++) 
         {
             file >> students[i].testScores[j];
         }
@@ -72,7 +69,7 @@ student* getData(ifstream& file, int& studentCnt, int& testsCnt)
     return students;
 }
 
-// This function prints the report to the console.
+// This function prints the report using the data stored in the array of student structures.
 void printReport(student students[], int studentCnt, int testsCnt)
 {
     cout << "Student ID" << setw(10) << "Name" << setw(10) << "Average" << setw(10) << "Grade" << endl;
@@ -82,7 +79,7 @@ void printReport(student students[], int studentCnt, int testsCnt)
     }
 }
 
-
+// This function calculates the average test score for each student and assigns a letter grade based on the average
 void calcAverage(student students[], int studentCnt, int testsCnt)
 {
     for (int i = 0; i < studentCnt; i++)
