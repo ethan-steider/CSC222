@@ -4,6 +4,18 @@
 #include <iomanip>
 using namespace std;
 
+
+// structure to hold student data
+struct student
+{
+    int studentID;
+    string lastName;
+    string firstName;
+    double *testScores;
+    double average;
+    char letterGrade;
+}
+
 // function prototypes
 char getLetterGrade(double average);   //function to calculate letter grade
 student* getData(ifstream& file, int& studentCnt, int& testsCnt); //function to get data from file
@@ -24,12 +36,13 @@ int main() {
     }
 
 
+}
 
 // This function reads the data from the input file and stores it in an array of student structures.
 student* getData(ifstream& file, int& studentCnt, int& testsCnt)
 {
-    file >> studentCnt
-    file >> testsCnt
+    file >> studentCnt;
+    file >> testsCnt;
 
     student* students = new student[studentCnt]; // create array of student structures
 
