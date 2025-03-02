@@ -114,8 +114,12 @@ char getLetterGrade(double average)
     {
         return 'D';
     }
-    else
+    else if (average >= 0 && average < 60) 
     {
         return 'F';
+    }
+    else
+    {
+        return 'X';
     }
 }
