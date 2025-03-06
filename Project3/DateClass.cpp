@@ -53,3 +53,21 @@ class Date {
         void printDate3();
         Date(int m = 1, int d = 1, int y = 1900);
 };
+
+void Date::setDate(int m, int d, int y){
+    if(m < 1 || m > 12){
+        cout << "Month invalid" << endl;
+        return;
+    }
+    if(d < 1 || d > lastDay(m, y)){
+        cout << "Day invalid" endl;
+        return;
+    }
+    if(y < 0){
+        cout << "Year invalid" << endl;
+        return;
+    }
+    month = m;
+    day = d;
+    year = y;
+}
