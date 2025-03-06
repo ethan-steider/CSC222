@@ -60,7 +60,7 @@ void Date::setDate(int m, int d, int y){
         return;
     }
     if(d < 1 || d > lastDay(m, y)){
-        cout << "Day invalid" endl;
+        cout << "Day invalid" << endl;
         return;
     }
     if(y < 0){
@@ -70,4 +70,28 @@ void Date::setDate(int m, int d, int y){
     month = m;
     day = d;
     year = y;
+}
+
+int Date::getMonth(){
+    return month;
+}
+
+int Date::getDay(){
+    return day;
+}
+
+int Date::getYear(){
+    return year;
+}
+
+bool Date::isLeapYear(){
+    return isLeapYear(year);
+}
+
+bool Date::isLeapYear(int year){
+    if(year % 4 == 0 && year % 100 != 0 || year % 400 == 0){
+        return true;
+    }
+    else
+        return false;
 }
